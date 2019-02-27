@@ -22,7 +22,7 @@ extra memory.
 # i=8, j=3 [0,1,2,3,4,2,2,3,3,4] j: 3->4
 
 
-def removeDuplicates(self, nums: 'List[int]') -> 'int':
+def removeDuplicates( nums):
     if len(nums) < 2:
         return
     j = 0
@@ -31,3 +31,9 @@ def removeDuplicates(self, nums: 'List[int]') -> 'int':
             j += 1
             nums[j] = nums[i + 1]
     return j + 1  # since j starts with zero, actual length will be "+1" to the current value
+
+
+if __name__ == "__main__":
+    nums = [0,0,1,1,1,2,2,3,3,4]
+    nums = [0, 1, 1, 1]
+    print(removeDuplicates(nums))

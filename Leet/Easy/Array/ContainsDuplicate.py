@@ -50,6 +50,7 @@ if __name__== "__main__":
 
     print(containsDuplicate([1,2,2,1]))
     print(containsDuplicate_1([1,1]))
+    print(containsDuplicate_1([1]))
 
 
 

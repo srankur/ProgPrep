@@ -48,7 +48,9 @@ def maxProfit_1(prices):
         return profit
 
 
-
+# Method-2: Valley and Peak approach for each transaction
+# Calculate consecutive valleys and peak
+# Add to the max Profit
 
 def maxProfit_2(prices):
     profit = 0
