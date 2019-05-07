@@ -47,10 +47,14 @@ def containsDuplicate_1(nums):
 
 
 if __name__== "__main__":
+    arr = [
+        [1, 2, 2, 1],
+        [1,1],
+        [1]
+    ]
 
-    print(containsDuplicate([1,2,2,1]))
-    print(containsDuplicate_1([1,1]))
-    print(containsDuplicate_1([1]))
+    result = list(map(containsDuplicate, arr))
+    print(result)
 
 
 

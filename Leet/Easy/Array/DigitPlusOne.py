@@ -24,7 +24,7 @@ Explanation: The array represents the integer 4321.
 
 def plusOne(digits):
     carry = 0
-    if digits [len(digits) -1 ] + 1 > 9:
+    if digits [-1 ] > 9:
         carry = (digits [len(digits) -1 ] + 1) % 10
         digits [len(digits) -1 ] = (digits [len(digits) -1 ] + 1) / 10
 

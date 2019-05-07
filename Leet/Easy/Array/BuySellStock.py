@@ -31,8 +31,14 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 
 def maxProfit_1(prices):
-    price_peak = prices[0]
-    price_valley = prices[0]
+
+    if (len(prices) < 2):
+        return 0
+
+    if (len(prices) > 2):
+        price_peak = prices[0]
+        price_valley = prices[0]
+
     profit = 0
     i = 0
     while i < len(prices) -1:
@@ -60,18 +66,37 @@ def maxProfit_2(prices):
     return profit
 
 
+def maxProfit_non_valleypeak(arr):
+    profit = 0
+    j = 0
+    length= len (arr)
+    for i in range(length):
+        j = i + 1 # Keep the j, one pointer ahead of i
+        if j < length and arr[i] > arr[j]:
+            continue
+
+        if j < length and arr[i] < arr[j]:
+            while j < length-1  and arr[j] < arr[j+1]:
+                j += 1
+            profit += (arr[j] - arr[i])
+            i = j
+
+    return profit
+
+
 
 if __name__ == "__main__":
-    list = [2,1,3]
-    print(list, maxProfit_1(list))
-    print("[1,2,3,4,5,]", maxProfit_1([1,2,3,4,5]))
-    print("[5,4,3,2,1]", maxProfit_1([5,4,3,2,1]))
-    print("[0,1]", maxProfit_1([0,1]))
-    print("[1,0]", maxProfit_1([1,0]))
+    arr_list = [
+        [],
+        [1, 2, 3, 4, 5],
+        [5, 4, 3, 2, 1],
+        [0, 1],
+        [1, 0]
+    ]
+    func_list =[maxProfit_1,maxProfit_2, maxProfit_non_valleypeak ]
+    print(maxProfit_non_valleypeak([1, 2, 3, 4, 5]))
+    # List comprehension
+    result_list = [list(map(func, arr_list)) for func in func_list]
+    print (result_list)
 
 
-    print(list, maxProfit_2(list))
-    print("[1,2,3,4,5,]", maxProfit_2([1,2,3,4,5]))
-    print("[5,4,3,2,1]", maxProfit_2([5,4,3,2,1]))
-    print("[0,1]", maxProfit_2([0,1]))
-    print("[1,0]", maxProfit_2([1,0]))
