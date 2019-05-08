@@ -23,3 +23,34 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 
 
 """
+
+def intersection_unsorted_method_1(arr1, arr2):
+    m = len(arr1)
+    n = len(arr2)
+    intersection = []
+    i = 0
+    j = 0
+    while (i < m and j < n ):
+        if arr1[i] > arr2[j]:
+            j += 1
+        elif arr1[i] < arr2[j]:
+            i += 1
+        else:
+            intersection.append(arr1[i])
+            i += 1
+            j += 1
+    return intersection
+
+
+def intersection_unsorted_method_2(arr1, arr2):
+    pass
+
+
+
+
+# Driver code
+if __name__ == "__main__":
+    input1 = [0, 1,2,2,3,7,8]
+    input2 = [2,2,7]
+
+    print(intersection_unsorted_method_1(input1, input2))

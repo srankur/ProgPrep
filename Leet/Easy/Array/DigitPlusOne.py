@@ -22,16 +22,54 @@ Explanation: The array represents the integer 4321.
 """
 
 
+# Approach
+'''
+Case#1: when 
+Input: 123, Initial Carry = 1
+Carry   item    resultant_array
+1       3       [1,2,4]
+0       2       [1,2,4]
+0       1       [1,2,4]
+
+Input: 999
+Carry   item    resultant_array
+1       9       [9,9,0]
+1       9       [9,0,0]
+1       9       [0,0,0]
+Need to copy array in with additional carry
+
+
+'''
+
 def plusOne(digits):
-    carry = 0
-    if digits [-1 ] > 9:
-        carry = (digits [len(digits) -1 ] + 1) % 10
-        digits [len(digits) -1 ] = (digits [len(digits) -1 ] + 1) / 10
+    carry = 1 # Need to ass one.
+    output = []
+    len_Of_digits = len(digits)
 
-    for i in range(len(digits)-2 , 0 ):
+    for  i in range(len_Of_digits -1 ,-1 , -1):
+        newValue= (digits[i] + carry) %10
+        carry = int((digits[i] + carry) // 10)
+        digits[i] = newValue
 
-        carry = (digits[i] + 1) % 10
-        newdigit=  (digits[i] + 1) / 10
+    if carry:
+        output.append(carry)
+        return(output + digits)
+
+    return digits
+
+
+
+# Driver Code
+if __name__ == "__main__":
+    input = [
+        [],
+        [9],
+        [1,2,3],
+        [9,9,9,9]
+    ]
+    output = list(map(plusOne, input))
+    print(output, sep="\n")
+
 
 
 
