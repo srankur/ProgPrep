@@ -18,6 +18,7 @@ Follow up:
 What if the inputs contain unicode characters? How would you adapt your solution to such case?
 """
 
+from collections import Counter
 
 def validAnagrams_naive(s, t):
     s= sorted(s)
@@ -29,14 +30,31 @@ def validAnagrams_naive(s, t):
 
 
 def validAnagrams_opti(s, t):
-    pass
+    # Make a couter dictionary of source string
+    source_cnt = Counter(s)
+    print(source_cnt)
+    # iterate through the target string,
+    # check for the item in source counter
+    # Deduct the count if available
+
+    for i in range(len(t)):
+        if t[i] in source_cnt:
+            source_cnt[t[i]] -= 1
+            if source_cnt[t[i]] == 0:
+                del source_cnt[t[i]]
+    print(source_cnt)
+    return False if (len(source_cnt) > 0) else True
+
+
+
 
 
 
 # DriverCode
 
 if __name__ == "__main__":
-    s = "anagram"
+    s = "anagramr"
     t = "nagaram"
 
-    print(validAnagrams(s,t))
+    #print(validAnagrams_naive(s,t))
+    print(validAnagrams_opti(s,t))
