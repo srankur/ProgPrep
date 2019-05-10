@@ -24,7 +24,6 @@ Assume we are dealing with an environment which could only store integers within
 
 
 
-
 def reverseInteger_iterative_simple(num):
     rev = 0
     negative_flag = False
