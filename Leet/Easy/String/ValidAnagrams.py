@@ -6,6 +6,9 @@ Given two strings s and t , write a function to determine if t is an anagram of 
 Example 1:
 
 Input: s = "anagram", t = "nagaram"
+
+LISTEN = SILENT
+
 Output: true
 Example 2:
 
@@ -32,11 +35,12 @@ def validAnagrams_naive(s, t):
 def validAnagrams_opti(s, t):
     # Make a couter dictionary of source string
     source_cnt = Counter(s)
-    print(source_cnt)
+    #print(source_cnt)
     # iterate through the target string,
     # check for the item in source counter
     # Deduct the count if available
-
+    if len(s) != len(t):
+        return False
     for i in range(len(t)):
         if t[i] in source_cnt:
             source_cnt[t[i]] -= 1
@@ -53,7 +57,7 @@ def validAnagrams_opti(s, t):
 # DriverCode
 
 if __name__ == "__main__":
-    s = "anagramr"
+    s = "anagram"
     t = "nagaram"
 
     #print(validAnagrams_naive(s,t))
