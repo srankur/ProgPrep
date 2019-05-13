@@ -31,6 +31,8 @@ def validAnagrams_naive(s, t):
 
 def validAnagrams_opti(s, t):
     # Make a couter dictionary of source string
+    if len(s) != len(t):
+        return False
     source_cnt = Counter(s)
     print(source_cnt)
     # iterate through the target string,
@@ -53,8 +55,8 @@ def validAnagrams_opti(s, t):
 # DriverCode
 
 if __name__ == "__main__":
-    s = "anagramr"
-    t = "nagaram"
+    s = "anagram"
+    t = "nagaramy"
 
     #print(validAnagrams_naive(s,t))
     print(validAnagrams_opti(s,t))
