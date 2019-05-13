@@ -25,5 +25,5 @@ if __name__ == "__main__":
     ls.CreateList(input)
 
 
-    #ls.printList(ls.ReverseList_iterative())
-    ls.printList(ls.ReverseList_recursive(ls.head))
+    ls.printList(ls.ReverseList_iterative(ls.head))
+    #ls.printList(ls.ReverseList_recursive(ls.head))

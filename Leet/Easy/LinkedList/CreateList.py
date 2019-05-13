@@ -80,12 +80,16 @@ class List:
         # Finally Print the updated list
         self.printList()
 
-    def ReverseList_iterative(self):
+    def ReverseList_iterative(self,Head):
         Prev = None
         Curr = None
         Next = None
 
-        Curr = self.head
+        if Head is not None:
+            Curr = Head
+        else:
+            Curr = self.head
+
         while Curr:
             Next = Curr.next
             Curr.next = Prev
