@@ -38,16 +38,7 @@ class List:
         return(ListNode(element))
 
 
-    def printList(self, Head = None):
-        if Head == None:
-            current_node = self.head
-        else:
-            current_node = Head
 
-        print("Current List::\n")
-        while current_node is not None:
-            print("[%s]->" % current_node.val )
-            current_node = current_node.next
 
     def deleteNode(self,node):
         current_node = self.head
@@ -80,7 +71,7 @@ class List:
         # Finally Print the updated list
         self.printList()
 
-    def ReverseList_iterative(self,Head):
+    def ReverseList_iterative(self,Head = None):
         Prev = None
         Curr = None
         Next = None
@@ -98,7 +89,7 @@ class List:
         return Prev
 
 
-    def ReverseList_recursive(self, Head):
+    def ReverseList_recursive(self, Head = None):
         if Head == None:
             return
 
@@ -110,14 +101,75 @@ class List:
         Head.next.next = Head
         Head.next = None
 
+    def isPalindrome_twoPointer(self,Head = None):
+        if Head != None:
+            Curr = Head
+        else:
+            Curr = self.head
+
+        Slow, Fast = Curr, Curr
+        MidNode = None
+        Prev_to_Slow = None
+        while Fast and Fast.next:
+            Fast = Fast.next.next
+            Prev_to_Slow = Slow
+            Slow = Slow.next
+
+
+        if Fast is not None:
+            MidNode = Slow
+            Slow = Slow.next
+
+        # Prepare the list for comparison
+        Second_half = Slow
+        Prev_to_Slow.next = None
+
+
+        ls.printList("Second Half", Second_half)
+        ls.printList("First Half",Curr)
+
+        reverseList = ls.ReverseList_iterative(Slow)
+        ls.printList( reverseList)
+
+    def isPalindrome_checkwithStack(self, Head=None):
+        if Head != None:
+            Curr = Head
+        else:
+            Curr = self.head
+        Val_stack = []
+        while Curr:
+            Val_stack.append(Curr.val)
+            Curr = Curr.next
+        print(Val_stack)
+
+        Curr = self.head
+        while Curr:
+            #print("Stack:%s, CurrentVal: %s" % (Val_stack.pop(), Curr.val))
+            if Val_stack.pop() != Curr.val:
+                print("Not a Palindrome! ")
+                return False
+            Curr = Curr.next
+        return True
+
+    def printList(self,text = None, Head = None):
+        if Head == None:
+            current_node = self.head
+        else:
+            current_node = Head
+        if text != None:
+            print(text, ":")
+        while current_node is not None:
+            print("[%s]->" % current_node.val )
+            current_node = current_node.next
 
 
 
 # Driver Code
-
 if __name__ == "__main__":
-    #listelment = [1,2,3,4,5]
-    listelement = []
+    listelment = [1,2,3,2,1]
+    #listelment = []
     ls = List()
-    ls.CreateList(listelement)
-    ls.printList()
+    ls.CreateList(listelment)
+    #ls.printList()
+    #print(ls.isPalindrome_checkwithStack(ls.head))
+    print(ls.isPalindrome_twoPointer(ls.head))

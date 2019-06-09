@@ -16,12 +16,17 @@ Follow up:
 Could you do it in O(n) time and O(1) space?
 
 """
-from  Leet.Easy.LinkedList.CreateList import List
+
+
+import LinkedList
 
 
 
 # Create List
-input = [5,4,3,2,1]
-ls = List()
-ls.CreateList(input)
-ls.deleteNode(ls.head.next)
+
+
+if __name__ == "__main__":
+    input = [5, 4, 3, 2, 1]
+    ls = List()
+    ls.CreateList(input)
+    ls.isPalindrome_checkwithStack(ls.head)
